@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Michroma&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Prompt:wght@100;200;300;400;500;600;700;800;900&family=Russo+One&family=Saira:wght@100;200;300;400;500;600;700;800;900&family=Tilt+Warp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Michroma&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Prompt:wght@100;200;300;400;500;600;700;800;900&family=Russo+One&family=Saira:wght@100;200;300;400;500;600;700;800;900&family=Tilt+Warp&display=swap');
+
+:root {
+  --font1: 'Anton', sans-serif;
+  --font2: 'Michroma', sans-serif;
+  --font3: 'Poppins', sans-serif;
+  --font4: 'Prompt', sans-serif;
+  --font5: 'Russo One', sans-serif;
+  --font6: 'Saira', sans-serif;
+  --font7: 'Tilt Warp', cursive;
+  --font8: 'Kanit', sans-serif;
+  --gray: #aaa;
+  --blue2: #5865F2;
+  /* --blue2: lime; */
+  /* --green: #D6FB00; */
+  --blue: #003B49;
+  --blue2: #00252e;
+  --org: #FF7D44;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font3);
+}
+
+body {
+  height: auto;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+#app {
+  width: 100%;
+  /* background-color: #d26637; */
+  height: 100vh;
+  /* overflow-y: hidden; */
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#app>aside {
+  /* background-color: #252537; */
+  background-color: var(--blue2);
+  height: 100%;
+  /* flex: 0.2; */
+  width: 270px;
+  flex-shrink: 0;
+  color: #fff;
+}
+
+#app main {
+  flex: 1;
+  height: 100%;
+}
+
+#temp {
+  height: 100vh;
+
+  background: #eee;
+  color: #1e1e2c;
+  font-size: 5rem;
+  text-transform: capitalize;
+  display: grid;
+  place-items: center;
+}
+
+#sec-title {}
+
+[data-collapse="false"] {
+  width: 270px;
+}
+
+[data-collapse="true"] {
+  width: 5rem !important;
+}
+
+[data-collapse="true"] .sidebar_nav_txt {
+  display: none !important;
+}
+
+[data-collapse="true"] .gray {
+  transform: rotate(45deg) !important;
+}
+
+[data-collapse="true"] .toggle_btn {
+  transform: rotate(180deg) !important;
+}
+
+[data-collapse="true"] #Sidebar_side_header__a6k7a,
+[data-collapse="true"] #Sidebar_nav_links__U48cH #Sidebar_link__QBJF_ a {
+  justify-content: center !important;
+  /* padding: 0 !important; */
+}
+
+aside {
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1) !important;
+}
+
+/* 
+@media (max-width:875px) {
+  #app>aside {
+    position: absolute;
+    left: -350px;
+  }
+} */
+#dash-title {
+  padding: 35px;
+  padding-bottom: 0;
+  /* text-align: center; */
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  gap: 9px;
+  font-size: 2.5rem !important;
+}
+
+#dash-title>* {
+  font-family: var(--font8) !important;
+
+}

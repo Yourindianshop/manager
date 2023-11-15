@@ -1,0 +1,25 @@
+  *::-webkit-scrollbar {
+      width: 5px;
+  }
+
+  *::-webkit-scrollbar-track {
+      background: var(--blue);
+      /* box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
+  }
+
+  *::-webkit-scrollbar-thumb {
+      background-color: var(--org);
+      /* box-shadow: 0 0 50px 5px rgba(254, 178, 1, 0.9); */
+      /* outline: 1px solid slategrey; */
+  }
+
+  ::-moz-selection {
+      /* Code for Firefox */
+      color: #191919;
+      background: var(--org);
+  }
+
+  ::selection {
+      color: #191919;
+      background: var(--org);
+  }

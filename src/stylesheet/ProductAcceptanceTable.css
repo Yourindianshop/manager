@@ -1,0 +1,166 @@
+.product-acceptance-container {
+  padding: 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.t-box {
+  height: auto;
+  width: 100% !important;
+  padding: 50px 75px;
+}
+
+table {
+  border: 1px #8685a3 solid;
+  font-size: 0.9em;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+th {
+  text-align: left;
+}
+
+thead {
+  font-weight: bold;
+  color: #fff;
+  background: var(--blue);
+}
+
+.btn {
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: var(--font6);
+  padding: 12.5px 38px;
+  transition: all ease-in-out 0.25s;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+.asr-photo {
+  /* height: 100;? */
+  max-height: 150px;
+}
+
+.btn-b {
+  color: #fff;
+  background: var(--blue) !important;
+}
+
+.btn-o {
+  color: #fff;
+  background: var(--org) !important;
+}
+
+.btn-b:hover {
+  background: var(--org) !important;
+}
+
+.btn-o:hover {
+  background: var(--blue) !important;
+}
+
+td,
+th {
+  padding: 7px;
+  vertical-align: middle;
+}
+
+td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  /* background: #fff; */
+  transition: 0.3s;
+}
+
+
+
+a {
+  color: #5f5d73;
+}
+
+.pd {
+  background-color: rgb(255, 236, 127) !important;
+}
+
+.ap {
+  background-color: rgb(164, 255, 119) !important;
+}
+
+#rr {
+  background: #fff;
+}
+
+#rr:hover {
+  background: rgb(255, 249, 245);
+}
+
+@media all and (max-width: 768px) {
+
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  th {
+    text-align: right;
+  }
+
+  table {
+    position: relative;
+    padding-bottom: 0;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  thead {
+    float: left;
+    white-space: nowrap;
+  }
+
+  tbody {
+    overflow-x: auto;
+    overflow-y: hidden;
+    position: relative;
+    white-space: nowrap;
+  }
+
+  tr {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  th {
+    border-bottom: 1px solid #8785a3;
+  }
+
+  td {
+    border-bottom: 1px solid #e5e5e5;
+  }
+}
+
+.filters {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #e4e4e4;
+  padding: 12.5px 35px;
+}
+
+.filters>* {
+  display: flex;
+}
+
+table .btn {
+  padding: 7px 17px;
+}
+
+.filter-title {}

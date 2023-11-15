@@ -1,0 +1,97 @@
+#par-info {
+    height: auto;
+    width: 100%;
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 7.5px;
+}
+
+#par-cont {
+    background: var(--blue);
+    height: 100dvh;
+    overflow-y: scroll;
+}
+
+#par-info .data-field {
+    border: 1px solid black;
+    border-radius: 7px;
+    /* overflow: hidden; */
+    display: flex;
+}
+
+#par-info .df-l {
+    background: var(--blue2);
+    width: 200px;
+    font-weight: 500;
+    flex-shrink: 0;
+    padding: 5px 15px;
+    border-right: 1px solid black;
+    color: white;
+}
+
+#par-info .df-r {
+    background: #0e2e34;
+    flex: 1;
+    flex-shrink: 0;
+    padding: 5px 15px;
+    border-right: 1px solid black;
+    color: #252525;
+    color: white;
+}
+
+.df-r .btn:hover {
+    background-color: rgb(246, 111, 0) !important;
+}
+
+.df-r .btn {
+    padding: 7px;
+}
+
+.df-np {
+    padding: 0 !important;
+}
+
+.df-o .df-r input {
+    color: white;
+    background: #0e2e34 !important;
+}
+
+.df-r input::placeholder {
+    /* background: rgb(255, 250, 245); */
+    flex: 1;
+    color: white !important;
+    /* padding: 5px 5px; */
+    border-right: 1px solid black;
+    color: #252525;
+    font-size: 1rem;
+}
+
+.df-r input {
+    width: 100%;
+    /* color: white; */
+    background: rgb(255, 250, 245);
+    /* background: var(--org); */
+    padding: 9px 0px;
+    padding-left: 15px;
+    outline: none;
+}
+
+.d-flex {
+    display: block;
+    flex-direction: column;
+}
+
+.btns {
+    display: flex;
+}
+
+.btn-g {
+    background: rgb(43, 204, 59);
+    color: white;
+}
+
+.btn-r {
+    color: white;
+    background: crimson;
+}

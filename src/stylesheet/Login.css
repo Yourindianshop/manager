@@ -1,0 +1,135 @@
+.signup {
+    /* background-color: #31343B; */
+    background-color: #252830;
+    color: white;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: var(--font7);
+    display: grid;
+    background: linear-gradient(to left, #003a4992, #0f1834c4),
+        url('https://raw.githubusercontent.com/KHUNTPRIYANSH/site_photos/main/shipping/wh3.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    place-items: center;
+}
+
+.form {
+    min-width: 350px;
+    background-color: #252525b2;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    align-content: center;
+    width: 30vw;
+    height: auto;
+    backdrop-filter: blur(3px);
+    border: solid rgb(105, 105, 105) 0.5px;
+}
+
+.form>* {
+    width: 100%;
+    border: none;
+}
+
+.form input,
+.form select {
+    color: white;
+    margin-top: 5px;
+    height: 2rem;
+    font-size: 1.15rem;
+    font-family: var(--font8);
+    border-radius: 3px;
+    background-color: rgba(95, 95, 95, 0.559);
+    padding-left: 10px;
+}
+
+.form label {
+    font-size: 0.9rem;
+    margin-top: 20px;
+    font-family: var(--font8);
+    font-weight: 500;
+}
+
+.btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font8);
+}
+
+.subtn {
+    border: none;
+    color: white;
+    margin-top: 10px;
+    font-family: 600;
+    height: 2rem;
+    border-radius: 3px;
+    background-color: var(--blue2);
+    width: 50%;
+    font-size: 1rem;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--font8);
+}
+
+.title {
+    font-size: 1.15rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    font-family: var(--font8);
+}
+
+.line {
+    width: 2px;
+    height: 30px;
+    border: none;
+    background-color: var(--org);
+}
+
+.uline {
+    width: 100%;
+    border-bottom: solid rgb(95, 95, 95) 0.1px;
+}
+
+.confirm input {
+    margin: 0;
+}
+
+.confirm {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    margin-top: 10px;
+}
+
+.org {
+    font-size: 2rem;
+    color: var(--blue2);
+    font-family: var(--font8);
+}
+
+.login_que {
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.forgot_pass {
+    font-size: 0.9rem;
+}
+
+.login_link {
+    text-decoration: none;
+    color: var(--blue2);
+}
