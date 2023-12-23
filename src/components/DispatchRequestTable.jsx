@@ -143,7 +143,7 @@ useEffect(()=>{
           </tr>
         </thead>
         <tbody>
-          {ispen && Ddt && pnd.map((request, index) => (
+          { Ddt && pnd.map((request, index) => (
             <tr key={index} id="rr">
               <td>{request.Sid}</td>
               <td>{request.Did}</td>
@@ -160,7 +160,7 @@ useEffect(()=>{
               </td>
             </tr>
           ))}
-          {!ispen && Ddt && apr.map((request, index) => (
+          {/* {!ispen && Ddt && apr.map((request, index) => (
             <tr key={index} id="rr">
               <td>{request.Sid}</td>
               <td>{request.Did}</td>
@@ -176,7 +176,7 @@ useEffect(()=>{
                 <button className="btn btn-o" onClick={()=>viewMore(request)} >View More</button>
               </td>
             </tr>
-          ))}
+          ))} */}
           {!Ddt && <p>Loading</p> }
           {Ddt && Ddt.length==0 && <p>No data found...</p> }
         </tbody>

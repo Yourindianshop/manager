@@ -13,6 +13,11 @@ const ProAccReq = () => {
   },[])
   return (
     <div id="dr-cont">
+      <div id="dash-title">
+          <span id="blue">Product</span>
+          <span id="org">Acceptance</span>
+          <span id="blue">Request</span>
+      </div>
       <ProductAcceptanceTable />
     </div>
   );

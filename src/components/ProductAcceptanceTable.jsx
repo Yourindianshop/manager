@@ -9,9 +9,18 @@ const ProductAcceptanceTable = () => {
   // 
   const {setRd,savedt,setSavedt,ispen,setIspen,mg}=useContext(MyContext);
   const [pad,setPad]=useState(null);
-  const [apr,setApr]=useState(null);
-  const [pnd,setpnd]=useState(null);
+  // const [apr,setApr]=useState(null);
+  // const [pnd,setpnd]=useState(null);
   const nav = useNavigate();
+  const [searchid,setSearchid]=useState(null);
+  const [isSearchContinue,setIsSearchContinue]=useState(false);
+  let alldata=null;
+  const [totalReq,setTotalReq]=useState(null);
+  const [isNext,setIsNext]=useState(true);
+  const [isPrev,setIsprev]=useState(false);
+  const pglimit =2;
+  const [totalpage,setTotalPage]=useState(1);
+  const [pgNumber,setPgNumber]=useState(1);
   
   // const getApproved = async (dt)=>{
   //   document.getElementById('p1').classList.remove("btn-b");
@@ -30,38 +39,113 @@ const ProductAcceptanceTable = () => {
   const viewmore = async (r)=>{
     setRd(r);
     setTimeout(() => {
-      nav("/par-info")
+      nav("/par-info");
     }, 500);
   }
-  const getData=async ()=>{
-    console.log("Wid " +mg?.Wid);
-    const dt = await fetchreq("GET",`getPAR/${mg?.Wid}?pg=1`,{});
+  const searchbyId = async ()=>{
+    const dt = await fetchreq("GET",`searchPAR/${mg?.Wid}/${searchid}`,{});
+    if(dt){
+      setIsSearchContinue(true);
+      setPad(dt.result);
+    }else{
+      setIsSearchContinue(false);
+    }
+  }
+  const getTotalRequest = async (ispen)=>{
+    let dt = await fetchreq("GET",`requestCountPAR${ispen?"P":"A"}/${mg?.Wid}`,{});
+    if(dt){
+      let count = dt.result[0]?.count;
+      let pgcount = Math.ceil(count/pglimit)
+      setTotalReq(count);
+      setTotalPage(pgcount);
+      if(pgcount==1){
+        setIsNext(false);
+        setIsprev(false);
+      }else{
+        setIsNext(true);
+        setIsprev(false);
+      }
+    }
+  }
+  const cancelSearch = async ()=>{
+    setIsSearchContinue(false);
+    getData(ispen,pgNumber);
+  }
+  const getData=async (isPending,pgNumber)=>{
+    // console.log("Wid " +mg?.Wid);
+    setPad([]);
+    const dt = await fetchreq("GET",`getPAR${isPending?"P":"A"}/${mg?.Wid}/${pgNumber}`,{});
     if(dt){
       setPad(dt.result);
+      alldata=dt.result;
       // getPendings(dt.result);
       // setSavedt(dt.result);
     }else{
       setPad(null);
     }
   }
-  useEffect(()=>{
-    if(savedt!=null ){
-      setPad(savedt);
-      if(ispen){
-        setIspen(true);
-      }else{
-        setIspen(false);
-      }
+  const loadPending = async ()=>{
+    setIspen(true);
+    getData(true,1);
+    setPgNumber(1);
+    getTotalRequest(true);
+  }
+  const loadApr = async ()=>{
+    setIspen(false);
+    getData(false,1);
+    setPgNumber(1);
+    getTotalRequest(false);
+  }
+  const goPrev = async ()=>{
+    if(pgNumber-1>0){
+      getData(ispen,pgNumber-1);
+      setPgNumber(pgNumber-1);
+      setIsNext(true);
+      if(pgNumber-1==1){setIsprev(false)}
     }else{
-      getData();
+      setIsprev(false);
     }
+  }
+  const goNext = async ()=>{
+    if(pgNumber+1<=totalpage){
+      getData(ispen,pgNumber+1);
+      setPgNumber(pgNumber+1);
+      setIsprev(true);
+      if(pgNumber+1==totalpage){setIsNext(false)}
+    }else{
+      setIsNext(false);
+    }
+  }
+  useEffect(()=>{
+    // if(savedt!=null ){
+    //   setPad(savedt);
+    //   alldata=savedt;
+    //   if(ispen){
+    //     setIspen(true);
+    //   }else{
+    //     setIspen(false);
+    //   }
+    // }else{
+    //   getData();
+    //   getTotalRequest();
+    // }
+    getData(ispen,pgNumber);
+    getTotalRequest(ispen);
   },[])
   
   return (
     <div className="product-acceptance-container">
-      <div style={{display:'flex'}}>
-        <button id="p1" onClick={()=>setIspen(true)} className={`btn ${ispen && "btn-b"} `}>Pending</button>
-        <button id="a1" onClick={()=>setIspen(false)} className={`btn ${!ispen && "btn-b"} `}>Approved</button>
+      {!isSearchContinue && <div style={{display:'flex'}}>
+        <button id="p1" onClick={loadPending} className={`btn ${ispen && "btn-b"} `}>Pending</button>
+        <button id="a1" onClick={loadApr} className={`btn ${!ispen && "btn-b"} `}>Approved</button>
+      </div>}
+      <div style={{display:'flex',justifyContent:!isSearchContinue?'space-between':'flex-end'}}>
+        {!isSearchContinue && <button onClick={()=>getData(ispen,pgNumber)}>Refresh</button>}
+        <div>
+          {isSearchContinue && <button onClick={cancelSearch} className="btn-b">Cancel Search</button>}
+          <input onChange={(e)=>setSearchid(e.target.value)} value={searchid} min={1} placeholder="Search by Request Id" type="number" />
+          <button disabled={searchid==null} onClick={searchbyId} className="btn-b">Search</button>
+        </div>
       </div>
       <table className="product-acceptance-table">
         <thead>
@@ -77,14 +161,9 @@ const ProductAcceptanceTable = () => {
         <tbody>
           {pad && pad.length!=0 && pad.map((request, index) => {
             const time = getDate(request.time);
-            const status = request.Verify!=1?"Pending":"Approved"
-            let seen = false;
-            if(ispen && request?.Verify!=1){
-              seen = true
-            }else if(!ispen && request?.Verify==1){
-              seen = true
-            }
-            return (seen &&  <tr key={index} id="rr">
+            const status = request.Verify!=1?"Pending":"Approved";
+            
+            return (  <tr key={index} id="rr">
               <td>{request.Rid}</td>
               <td>{request.email}</td>
               <td>{request.productName}</td>
@@ -100,6 +179,11 @@ const ProductAcceptanceTable = () => {
           {pad && pad.length==0 && <p>No data found</p> }
         </tbody>
       </table>
+      {totalpage!=1 && !isSearchContinue && totalReq && <div style={{display:'flex',justifyContent:'space-between'}}>
+        <button disabled={!isPrev} className={isPrev && 'btn-b'} onClick={goPrev}>Prev</button>
+        {pgNumber}/{totalpage}
+        <button disabled={!isNext} className={isNext && 'btn-b'} onClick={goNext}>Next</button>
+      </div>}
     </div>
   );
 };

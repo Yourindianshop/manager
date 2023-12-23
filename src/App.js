@@ -2,13 +2,13 @@ import React, { createContext, useEffect, useState } from "react";
 import Sidebar from "./components/Sidebar";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import AssistedPurchase from "./pages/AssistedPurchase"
-import Dashboard from "./pages/Dashboard"
-import Customers from "./pages/Customers"
-import DisReq from "./pages/DisReq"
+import AssistedPurchase from "./pages/AssistedPurchase";
+import Dashboard from "./pages/Dashboard";
+import Customers from "./pages/Customers";
+import DisReq from "./pages/DisReq";
 import PrintDisDoc from "./pages/PrintDisDoc";
-import SignIn from "./pages/SignIn"
-import ProAccReq from "./pages/ProAccReq"
+import SignIn from "./pages/SignIn";
+import ProAccReq from "./pages/ProAccReq";
 import AccRqInfo from "./components/AccRqInfo";
 import DisRqInfo from "./components/DisReqInfo";
 export const MyContext = createContext();
