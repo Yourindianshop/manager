@@ -1,25 +1,50 @@
-  *::-webkit-scrollbar {
-      width: 5px;
-  }
+*::-webkit-scrollbar {
+  width: 5px;
+}
 
-  *::-webkit-scrollbar-track {
-      background: var(--blue);
-      /* box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
-  }
+*::-webkit-scrollbar-track {
+  background: var(--blue);
+}
 
-  *::-webkit-scrollbar-thumb {
-      background-color: var(--org);
-      /* box-shadow: 0 0 50px 5px rgba(254, 178, 1, 0.9); */
-      /* outline: 1px solid slategrey; */
-  }
+*::-webkit-scrollbar-thumb {
+  background-color: var(--org);
+}
 
-  ::-moz-selection {
-      /* Code for Firefox */
-      color: #191919;
-      background: var(--org);
-  }
+::-moz-selection {
+  color: #191919;
+  background: var(--org);
+}
 
-  ::selection {
-      color: #191919;
-      background: var(--org);
-  }
+::selection {
+  color: #191919;
+  background: var(--org);
+}
+
+.dispatch-pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.pagination-btn {
+  padding: 8px 12px;
+  margin: 0 5px;
+  background-color: var(--blue); /* Change to your preferred color */
+  color: #fff;
+  border: 1px solid var(--blue); /* Change to your preferred color */
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination-btn:disabled {
+  background-color: #ccc;
+  color: #666;
+  border: 1px solid #ccc;
+  cursor: not-allowed;
+}
+
+.pagination-btn.active {
+  background-color: var(--org);
+  color: #fff;
+  border: 1px solid var(--org);
+}
